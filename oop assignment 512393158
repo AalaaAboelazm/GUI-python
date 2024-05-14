@@ -1,0 +1,174 @@
+# Professor please run ths code in the order for the frist time and run this code on pycharm
+import sys
+class Product:
+    def __init__(self,product_id,name,price,manufacturer,weight,expiration_date,year):
+        self.supermarket_name="oscar"
+        self.__id=product_id
+        self.name=name
+        self.price=price
+        self.manufacturer=manufacturer
+        self.weight=weight
+        self.expiration_date=expiration_date
+        self.year=year
+
+    def add_new_product(self,product):
+        self.product=product
+
+    def display_product_details(self):
+        print("\n--------PRODUCT DETAILS-----------")
+        print(f"supermarket_name:{self.supermarket_name}")
+        print(f"name:{self.name}")
+        print(f"price:{self.price}")
+        print(f"manufacturer:{self.manufacturer}")
+        print(f"weight:{self.weight}")
+        print(f"expiration_date:{self.expiration_date}")
+        print(f"year:{self.year}")
+
+    def get_edit_product_id(self):
+        return self.__id
+
+    def set_id(self,new_id):
+        self.__id=new_id
+
+class Healthy(Product):
+    def __init__(self,components,product_id,name,price,manufacturer,weight,expiration_date,year):
+        self.calories=0
+        self.components=components
+        super().__init__(product_id,name,price,manufacturer,weight,expiration_date,year)
+
+    def add_new_healthy_product(self,healthy_product):
+        self.healthy_product = healthy_product
+
+    def display_healthy_product_details(self):
+        print("\n--------PRODUCT DETAILS-----------")
+        print(f"calories:{self.calories}")
+        print(f"components:{self.components}")
+        print(f"supermarket_name:{self.supermarket_name}")
+        print(f"name:{self.name}")
+        print(f"price:{self.price}")
+        print(f"manufacturer:{self.manufacturer}")
+        print(f"weight:{self.weight}")
+        print(f"expiration_date:{self.expiration_date}")
+        print(f"year:{self.year}")
+
+    def edit_calories(self,new_calories):
+        self.new_cal=new_calories
+
+    def check_calories_components(self):
+        print("new calories : ",self.new_cal)
+        print("components : ",self.components)
+
+    def compute_total_calories(self):
+        total_calories = self.new_cal * self.weight
+        return total_calories
+
+
+def transaction():
+    print("""
+    --------Welcome To Supermarket System------
+    -------------------------------------------
+    1.product system
+    2.healthy system
+    choose 1 or 2
+    :return:
+    """)
+    while True:
+        try:
+            option_big = int(input("Enter 1 or 2 "))
+        except:
+            print("Error:Enter 1 or only! \n")
+            continue
+        else:
+            if option_big == 1:
+                
+                print("""--------Welcome To Product System------
+                        # -------------------------------------------
+                            1. Add new Product
+                            2. Display Product Details
+                            3. Change/Edit product_ID.
+                            4. Exit the sub-system.
+                            5. Exit the Supermarket cashier system
+                        choose 1,2,3,4 or 5
+                            """)
+                while True:
+                    try:
+                        option = int(input("Enter 1,2,3,4 or 5  "))
+                    except:
+                        print("Error:Enter 1,2,3,4 or 5 only! \n")
+                        continue
+                    else:
+                        if option == 1:
+
+                            product__id = int(input("Enter product ID: "))
+                            name = input("Enter product name: ")
+                            price = float(input("Enter product price: "))
+                            manufacturer = input("Enter product manufacturer: "),
+                            weight = float(input("Enter product weight: "))
+                            expiration_date = input("Enter product expiration date: ")
+                            year = int(input("Enter product year: "))
+                            product = Product(product__id, name, price, manufacturer, weight, expiration_date, year)
+                            print("product added successfully")
+                        elif option == 2:
+                            product.display_product_details()
+                        elif option == 3:
+                            new_id = int(input("enter New Id"))
+                            product.set_id(new_id)
+                            print("the New ID is : ", new_id)
+                        elif option==4:
+                            print("thank you for using product system")
+                            break
+                        elif option == 5:
+                            print("thank you for using super market system")
+                            sys.exit()
+
+            elif option_big == 2:
+                print("""--------Welcome To Healthy sub-system------
+                #         -------------------------------------------
+
+                            1. Add new Healthy Product
+                            2. Display Healthy Product Details
+                            3. Change/Edit calories. (calories by 1 gram)
+                            4. Check calories and components of Healthy Product
+                            5. Compute total calories of the Healthy Product based on the weight
+                            6. Exit the sub-system
+                            7. Exit the Supermarket cashier system
+                            choose 1,2,3,4,5,6 or 7
+                    """)
+                while True:
+                    try:
+                        option = int(input("Enter 1,2,3,4,5,6 or 7  "))
+                    except:
+                        print("Error:Enter 1,2,3,4,5,6 or 7 only! \n")
+                        continue
+                    else:
+                        if option == 1:
+
+                            product__id = int(input("Enter product ID: "))
+                            name = input("Enter product name: ")
+                            price = float(input("Enter product price: "))
+                            manufacturer = input("Enter product manufacturer: "),
+                            weight = float(input("Enter product weight: "))
+                            expiration_date = input("Enter product expiration date: ")
+                            year = int(input("Enter product year: "))
+                            components = input("Enter product components: ")
+                            healthy = Healthy(components, product__id, name, price, manufacturer, weight,
+                                            expiration_date, year)
+                            print("product added successfully")
+                        elif option == 2:
+                            healthy.display_healthy_product_details()
+                        elif option == 3:
+                            new_calories = int(input("enter new_calories"))
+                            healthy.edit_calories(new_calories)
+                            print("the new_caloriesis : ", new_calories)
+                        elif option == 4:
+                            healthy.check_calories_components()
+                        elif option == 5:
+                            print("healthy compute total calories = ", healthy.compute_total_calories())
+                        elif option==6:
+                            print("thank you for using healthy system")
+                            break
+                        elif option==7:
+                            print("thank you for using super market system")
+                            sys.exit()
+
+transaction()
