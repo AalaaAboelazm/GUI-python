@@ -1,0 +1,110 @@
+# Professor please run this code on vs code
+# and i made the messagebox for years (messagebox error)if it more than 7
+from tkinter import *
+from tkinter import messagebox
+root=Tk()
+root.title('plan yor loan application')
+root.geometry('500x500+400+400')
+
+def exit ():
+    root.quit()
+
+def clear():
+    e.delete(0,'end')
+    e1.delete(0,'end')
+    e2.delete(0,'end')
+    output_l.config(text='')
+
+def Calculate():
+    amount=float(e.get())
+    year=int(e1.get())
+    if year==1:
+            interest_rate=13.76
+            total_interest = amount * interest_rate / 100 * 1
+            total_loan=amount+total_interest
+            pay_month=total_loan/1*12
+            output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+    elif year == 2:
+            interest_rate = 13.74
+            total_interest = amount * interest_rate / 100 * 2
+            total_loan = amount + total_interest
+            pay_month = total_loan / 2 * 12
+            output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+
+    elif year == 3:
+            interest_rate = 14.06
+            total_interest = amount * interest_rate / 100 * 3
+            total_loan = amount + total_interest
+            pay_month = total_loan / 3 * 12
+            output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+
+    elif year == 4:
+            interest_rate = 14.46
+            total_interest = amount * interest_rate / 100 * 4
+            total_loan = amount + total_interest
+            pay_month = total_loan / 4 * 12
+            output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+    elif year == 5:
+        interest_rate = 14.87
+        total_interest = amount * interest_rate / 100 * 5
+        total_loan = amount + total_interest
+        pay_month = total_loan / 5 * 12
+        output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+            
+
+    elif year == 6:
+            interest_rate = 15.29
+            total_interest = amount * interest_rate / 100 * 6
+            total_loan = amount + total_interest
+            pay_month = total_loan / 6 * 12
+            output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+
+    elif year == 7:
+            interest_rate = 15.71
+            total_interest = amount * interest_rate / 100 * 7
+            total_loan = amount + total_interest
+            pay_month = total_loan / 7 * 12
+            output = "your interest rate = " + str(interest_rate) + "\n your total interest = " + str(total_interest) + \
+                "\n your pay month = " + str(pay_month) + "\n your total loan = " + str(total_loan)
+
+    else:
+        messagebox.showerror("Error", "out of years range.")
+
+    output_l.config(text=output)
+
+logo=PhotoImage(file="final/download.png")
+l_photo=Label(root, image=logo)
+l_photo.pack()
+
+l=Label(root,text="loan amount",bg="light blue")
+l.pack()
+e=Entry(root)
+e.pack()
+
+l1=Label(root,text="numbers of years to pay",bg="light blue")
+l1.pack()
+e1=Entry(root)
+e1.pack()
+
+l2=Label(root,text="your job",bg="light blue")
+l2.pack()
+e2=Entry(root)
+e2.pack()
+
+b=Button(root, text="Calculate",command=Calculate)
+b.pack()
+b1=Button(root, text="clear",command=clear)
+b1.pack()
+b2=Button(root, text="exit",command=exit)
+b2.pack()
+
+output_l = Label()
+output_l.pack()
+
+root.mainloop()
